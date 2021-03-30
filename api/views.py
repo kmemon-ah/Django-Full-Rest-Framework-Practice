@@ -22,6 +22,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle, ScopedRateThrottle
 from .throttling import EmonRateThrottle
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter
 
 # if one instance
 def student_detail(request, pk ):
@@ -587,8 +588,7 @@ def studentb_api_permission(request, pk = None):
         stu.delete()
         return Response({'msg':'Data Deleted'})
 
-# Api filtering
-
+# Api filtering and search filtering and  Ordering filter
 class StuL(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentMSerializer
@@ -600,6 +600,8 @@ class StuL(ListAPIView):
 
     # generic filtering
     # for per view
-    filter_backends=[DjangoFilterBackend]
+    # filter_backends=[DjangoFilterBackend]
     # filterset_fields = ['city']
-    filterset_fields = ['name', 'city']
+    # filterset_fields = ['name', 'city']
+    filter_backends= [SearchFilter]
+    search_fields = ['^name','city']
