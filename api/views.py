@@ -611,5 +611,8 @@ class StuL(ListAPIView):
     # ordering_fields =['name', 'city']
 
     # page number pagination
-    pagination_class = MyPageNPagination
+    # pagination_class = MyPageNPagination
+
+    # Limit offset pagination
+    pagination_class = MyLimitOffsetPagination
 
