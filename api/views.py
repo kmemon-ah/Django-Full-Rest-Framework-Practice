@@ -614,5 +614,8 @@ class StuL(ListAPIView):
     # pagination_class = MyPageNPagination
 
     # Limit offset pagination
-    pagination_class = MyLimitOffsetPagination
+    # pagination_class = MyLimitOffsetPagination
+
+    # Cursor Pagination
+    pagination_class = MyCursorPagination
 
