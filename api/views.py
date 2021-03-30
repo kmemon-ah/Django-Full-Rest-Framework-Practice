@@ -22,7 +22,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle, ScopedRateThrottle
 from .throttling import EmonRateThrottle
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 
 # if one instance
 def student_detail(request, pk ):
@@ -603,5 +603,7 @@ class StuL(ListAPIView):
     # filter_backends=[DjangoFilterBackend]
     # filterset_fields = ['city']
     # filterset_fields = ['name', 'city']
-    filter_backends= [SearchFilter]
-    search_fields = ['^name','city']
+    # filter_backends= [SearchFilter]
+    filter_backends= [OrderingFilter]
+    # search_fields = ['^name','city']
+    ordering_fields =['name', 'city']
