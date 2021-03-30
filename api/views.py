@@ -23,6 +23,8 @@ from rest_framework.throttling import AnonRateThrottle, UserRateThrottle, Scoped
 from .throttling import EmonRateThrottle
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.pagination import PageNumberPagination
+from .mypagination import *
 
 # if one instance
 def student_detail(request, pk ):
@@ -588,7 +590,7 @@ def studentb_api_permission(request, pk = None):
         stu.delete()
         return Response({'msg':'Data Deleted'})
 
-# Api filtering and search filtering and  Ordering filter
+# Api filtering and search filtering and  Ordering filter and Pagination
 class StuL(ListAPIView):
     queryset = Student.objects.all()
     serializer_class = StudentMSerializer
@@ -604,6 +606,10 @@ class StuL(ListAPIView):
     # filterset_fields = ['city']
     # filterset_fields = ['name', 'city']
     # filter_backends= [SearchFilter]
-    filter_backends= [OrderingFilter]
+    # filter_backends= [OrderingFilter]
     # search_fields = ['^name','city']
-    ordering_fields =['name', 'city']
+    # ordering_fields =['name', 'city']
+
+    # page number pagination
+    pagination_class = MyPageNPagination
+
