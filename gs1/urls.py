@@ -125,4 +125,7 @@ urlpatterns = [
     path('jwtrefreshtoken/', TokenRefreshView.as_view(), name = 'jwttoken_refresh'),
     path('jwtverifytoken/', TokenVerifyView.as_view(), name = 'jwttoken_verify'),
 
+    # for filtering
+    path('filterstu/', views.StuL.as_view(), name= 'filtr'),
+
 ]

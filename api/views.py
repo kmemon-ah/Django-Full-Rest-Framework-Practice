@@ -21,6 +21,7 @@ from .customauth import CustomAuth
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle, ScopedRateThrottle
 from .throttling import EmonRateThrottle
+from django_filters.rest_framework import DjangoFilterBackend
 
 # if one instance
 def student_detail(request, pk ):
@@ -585,3 +586,20 @@ def studentb_api_permission(request, pk = None):
         stu = Student.objects.get(pk=id)
         stu.delete()
         return Response({'msg':'Data Deleted'})
+
+# Api filtering
+
+class StuL(ListAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentMSerializer
+    # filter one method
+
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     return Student.objects.filter(passby=user)
+
+    # generic filtering
+    # for per view
+    filter_backends=[DjangoFilterBackend]
+    # filterset_fields = ['city']
+    filterset_fields = ['name', 'city']
