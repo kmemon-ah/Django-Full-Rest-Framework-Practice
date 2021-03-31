@@ -51,6 +51,10 @@ sessionapirouter = DefaultRouter()
 # registering viewset with router
 sessionapirouter.register('sviewsetapi',views.StudentSession, basename='stude')
 
+# for Rest Serializer Relation
+realtion_router = DefaultRouter()
+realtion_router.register('singer', views.SingerViewset, basename = 'singer')
+realtion_router.register('song', views.SongViewset, basename= 'song')
 
 
 
@@ -127,5 +131,8 @@ urlpatterns = [
 
     # for filtering
     path('filterstu/', views.StuL.as_view(), name= 'filtr'),
+
+    # for Rest Serializer Relation
+    path('relation/', include(realtion_router.urls))
 
 ]
