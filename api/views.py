@@ -619,7 +619,7 @@ class StuL(ListAPIView):
     # Cursor Pagination
     pagination_class = MyCursorPagination
 
-# For Serialzer Relation in Rest Api
+# For Serialzer Relation in Rest Api and Nested Serializer
 class SingerViewset(viewsets.ModelViewSet):
     queryset = Singer.objects.all()
     serializer_class =  SingerSerializer
