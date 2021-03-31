@@ -627,3 +627,8 @@ class SingerViewset(viewsets.ModelViewSet):
 class SongViewset(viewsets.ModelViewSet):
     queryset = Song.objects.all()
     serializer_class =  SongSerializer
+
+# for hyperlink model serializer
+class StudentHyperViewset(viewsets.ModelViewSet):
+    queryset = Student.objects.all()
+    serializer_class =  StudentHyperlinkSerializer

@@ -73,3 +73,8 @@ class SingerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Singer
         fields = ['id', 'name', 'gender', 'song']
+
+class StudentHyperlinkSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Student
+        fields = ['id', 'url', 'name', 'roll', 'city', 'passby']

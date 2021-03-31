@@ -56,6 +56,10 @@ realtion_router = DefaultRouter()
 realtion_router.register('singer', views.SingerViewset, basename = 'singer')
 realtion_router.register('song', views.SongViewset, basename= 'song')
 
+# for Hyprlink Model Serializer
+hyper_router = DefaultRouter()
+hyper_router.register('hyperstu', views.StudentHyperViewset, basename = 'student')
+
 
 
 urlpatterns = [
@@ -133,6 +137,9 @@ urlpatterns = [
     path('filterstu/', views.StuL.as_view(), name= 'filtr'),
 
     # for Rest Serializer Relation
-    path('relation/', include(realtion_router.urls))
+    path('relation/', include(realtion_router.urls)),
+
+    # for Hyperlink model Serializer
+    path('hyper/', include(hyper_router.urls)),
 
 ]
